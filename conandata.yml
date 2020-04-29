@@ -1,4 +1,4 @@
 sources:
-  "1.0.0":
-    url: "https://github.com/libauthor/libname"
-    sha256: "98f6f57aab0a424469619ed3047728f0d3901ce8f0dea919c11e7966d807e870"
+  "0.1.0":
+    url: "https://github.com/dkormalev/cefal/archive/0.1.0.tar.gz"
+    sha256: "eb8693b986a66e21935937fd547cc00bc91420eb82ae8fef80ce1dcc6c5357fe"

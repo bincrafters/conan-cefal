@@ -1,14 +1,14 @@
-from conans import ConanFile, tools
+from conans import ConanFile, tools, CMake
 import os
 
 
-class LibnameConan(ConanFile):
-    name = "libname"
-    description = "Keep it short"
-    topics = ("conan", "libname", "logging")
-    url = "https://github.com/bincrafters/conan-libname"
-    homepage = "https://github.com/original_author/original_lib"
-    license = "MIT"  # Indicates license type of the packaged library; please use SPDX Identifiers https://spdx.org/licenses/
+class CefalConan(ConanFile):
+    name = "cefal"
+    description = "(Concepts-enabled) Functional Abstraction Layer for C++"
+    topics = ("conan", "cefal", "monad")
+    url = "https://github.com/bincrafters/conan-cefal"
+    homepage = "https://github.com/dkormalev/cefal"
+    license = "BSD-3-Clause"  # Indicates license type of the packaged library; please use SPDX Identifiers https://spdx.org/licenses/
     no_copy_source = True
 
     _source_subfolder = "source_subfolder"
@@ -19,9 +19,10 @@ class LibnameConan(ConanFile):
         os.rename(extracted_dir, self._source_subfolder)
 
     def package(self):
-        include_folder = os.path.join(self._source_subfolder, "include")
-        self.copy(pattern="LICENSE", dst="licenses", src=self._source_subfolder)
-        self.copy(pattern="*", dst="include", src=include_folder)
+        cmake = CMake(self)
+        cmake.configure(source_folder=self._source_subfolder)
+        cmake.install()
+        self.copy("LICENSE", dst="licenses", src=self._source_subfolder)
 
     def package_id(self):
         self.info.header_only()
