@@ -10,7 +10,7 @@ class CefalConan(ConanFile):
     url = "https://github.com/bincrafters/conan-cefal"
     homepage = "https://github.com/dkormalev/cefal"
     license = "BSD-3-Clause"
-    settings = "compiler"
+    settings = "compiler", "os", "arch"
     no_copy_source = True
 
     _source_subfolder = "source_subfolder"
